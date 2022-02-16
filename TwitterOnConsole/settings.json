@@ -1,0 +1,24 @@
+{
+    "main": {
+        "verbose": true,
+        "debug": false
+    },
+    "log": {
+        "file": {
+            "enable": true,
+            "level": "debug"
+        },
+        "stream": {
+            "enable": true,
+            "level": "debug"
+        }
+    },
+    "extension": {
+        "picture": [
+            "jpg",
+            "jpeg",
+            "png",
+            "gif"
+        ]
+    }
+}
