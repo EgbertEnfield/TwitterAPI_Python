@@ -12,11 +12,13 @@ class Modes(Enum):
 
 
 class Requires(Enum):
+    Nothing = 0,
     Pictures = 1,
     Words = 3
 
 
 class Switches(Enum):
+    Nothing = 0,
     Add = 1,
     Del = 3
 
@@ -35,6 +37,15 @@ def setup_API_v11(
         logger.debug('API-v1.1 setup complete')
 
     return tweepy.API(auth)
+
+
+def get_flag():
+    flags = {
+        'mode': None,
+        'Require': None,
+        'Switches': None
+    }
+    return
 
 
 def tweet(api, message, pictures, flags, logger):

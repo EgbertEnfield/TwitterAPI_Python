@@ -112,6 +112,9 @@ def parse_args(arguments=sys.argv, logger=None):
         help='Delete favorite from the tweet.')
     p_favorite.set_defaults(func=twitterhandlers.favorite)
 
+    p_retweet = subparsers.add_parser(
+        'retweet')
+
     parsed = parser.parse_args()
 
     if parsed.func == twitterhandlers.tweet:
