@@ -85,7 +85,7 @@ def parse_args(arguments=sys.argv, logger=None):
     p_tweet.add_argument(
         '-p', '--pictures',
         help='Path of the images to be tweeted. (Up to 4)')
-    p_tweet.set_defaults(func_tweet=twitterhandlers.tweet)
+    p_tweet.set_defaults(func=twitterhandlers.tweet)
 
     p_reply = subparsers.add_parser(
         'reply',
@@ -96,11 +96,30 @@ def parse_args(arguments=sys.argv, logger=None):
     p_reply.add_argument(
         '-p', '--pictures',
         help='Path of the images to be replied. (Up to 4)')
-    p_tweet.set_defaults(func_reply=twitterhandlers.reply)
+    p_reply.set_defaults(func=twitterhandlers.reply)
+
+    p_favorite = subparsers.add_parser(
+        'favorite',
+        help='See \"favprite\" [-h|--help].')
+    p_favorite.add_argument(
+        'tweetid',
+        help='Id of the tweet which to be favorite.')
+    p_favorite.add_argument(
+        '-a', '--add',
+        help='Add favorite to the tweet.')
+    p_favorite.add_argument(
+        '-d', '--del',
+        help='Delete favorite from the tweet.')
+    p_favorite.set_defaults(func=twitterhandlers.favorite)
 
     parsed = parser.parse_args()
-    parsed.func_tweet(parsed)
-    parsed.func_reply(parsed)
+
+    if parsed.func == twitterhandlers.tweet:
+        twitterhandlers.tweet(vars(parsed))
+    elif parsed.func == twitterhandlers.reply:
+        twitterhandlers.reply(vars(parsed))
+    elif parsed.func == twitterhandlers.favorite:
+        twitterhandlers.favorite(vars(parsed))
 
     if (parsed.version):
         print(f'botcore.py version: {VERSION}')

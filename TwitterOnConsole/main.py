@@ -13,7 +13,7 @@ def main():
         token_secret=keys['tokenSecret'],
         logger=setuplogger.create_logger()
     )
-    foo = settingshandlers.get_settings()
+    print(settingshandlers.parse_args())
     return api
 
 

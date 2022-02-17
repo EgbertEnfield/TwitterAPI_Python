@@ -24,3 +24,7 @@ def tweet(args):
 
 def reply(args):
     print(args)
+
+
+def favorite(args):
+    print(args)
